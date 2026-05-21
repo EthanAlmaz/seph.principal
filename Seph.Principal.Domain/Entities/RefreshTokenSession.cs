@@ -36,25 +36,34 @@ namespace Seph.Principal.Domain.Entities
         #endregion
 
         #region Metodos de la clase
-        public static RefreshTokenSession Create(Guid userId, string tokenHash, string deviceId, string ipAddress, DateTimeOffset expiresAtUtc)
-       => new(userId, tokenHash, deviceId, ipAddress, expiresAtUtc);
 
-        public void Rotate(string tokenHash, DateTimeOffset expiresAtUtc, string ipAddress)
-        {
-            TokenHash = tokenHash;
-            ExpiresAtUtc = expiresAtUtc;
-            IpAddress = ipAddress;
-            Status = SessionStatus.Active;
-            Touch();
-        }
+/*El método Create es un método de fábrica que se utiliza para crear 
+ * una nueva instancia de RefreshTokenSession. */
+public static RefreshTokenSession Create(Guid userId, string tokenHash, string deviceId, string ipAddress, DateTimeOffset expiresAtUtc)
+=> new(userId, tokenHash, deviceId, ipAddress, expiresAtUtc);
 
-        public void Revoke()
-        {
-            Status = SessionStatus.Revoked;
-            RevokedAtUtc = DateTimeOffset.UtcNow;
-            Touch();
-        }
-        #endregion
+/*El método Rotate se utiliza para actualizar el token de una sesión existente. 
+*Este método actualiza el hash del token, la fecha de expiración, la dirección IP y el estado de la sesión a "Active".
+*/
+public void Rotate(string tokenHash, DateTimeOffset expiresAtUtc, string ipAddress)
+{
+    TokenHash = tokenHash;
+    ExpiresAtUtc = expiresAtUtc;
+    IpAddress = ipAddress;
+    Status = SessionStatus.Active;
+    Touch();
+}
+
+/*El método Revoke se utiliza para revocar una sesión de token de actualización.
+ *Este método actualiza el estado de la sesión a "Revoked" y establece la fecha de revocación.
+ */
+public void Revoke()
+{
+    Status = SessionStatus.Revoked;
+    RevokedAtUtc = DateTimeOffset.UtcNow;
+    Touch();
+}
+#endregion
 
     }
 }
