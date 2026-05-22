@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Seph.Principal.Application.Features.Auth.DTOs
+﻿namespace Seph.Principal.Application.Features.Auth.DTOs
 {
-    internal class AuthenticatedUserDto
-    {
-    }
+    /*Transporta datos del usuario autenticado desde la capa de application hacia api 
+     *o a otros casos de uso
+     *el record presanta datos inmutables, es decir, una vez creado el objeto no se pueden modificar sus propiedades,
+     *
+     */
+    public sealed record AuthenticatedUserDto(Guid Id, string Email, string FullName, 
+        IReadOnlyCollection<string> Roles,
+        IReadOnlyCollection<string> Permissions);
+    
+    
 }
