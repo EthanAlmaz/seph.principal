@@ -54,7 +54,7 @@ namespace Seph.Principal.Application.Features.Auth.Commands.RefreshToken
              newRefreshToken,
              DateTimeOffset.UtcNow.AddMinutes(15),
              new UserSessionDto(user.Id, user.Email, user.FullName, user.Roles, user.Permissions));
-            /*10. Mantenerse actualizado con las últimas tendencias y vulnerabilidades en seguridad de autenticación y autorización,
+            /* 10. Mantenerse actualizado con las últimas tendencias y vulnerabilidades en seguridad de autenticación y autorización,*/
             return ResponseFactory.Success(response);
         }
     }
