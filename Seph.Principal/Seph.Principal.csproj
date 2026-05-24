@@ -16,7 +16,11 @@
     <Folder Include="Controllers\" />
     <Folder Include="Extensions\" />
     <Folder Include="Middleware\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seph.Principal.Application\Seph.Principal.Application.csproj" />
+    <ProjectReference Include="..\Seph.Principal.Infraestructure\Seph.Principal.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
