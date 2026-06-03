@@ -81,6 +81,8 @@ namespace Seph.Principal.Infraestructure.DependencyInjection
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddScoped<IRefreshTokenSessionRepository, RefreshTokenSessionRepository>();
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<IInstitucionRepository,InstitucionRepository>();
+
             services.AddSingleton<IJwtTokenService, JwtTokenService>();
             services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandler>();
             
